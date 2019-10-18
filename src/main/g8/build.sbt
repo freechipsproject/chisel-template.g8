@@ -8,7 +8,7 @@ resolvers ++= Seq(
 lazy val root = (project in file("."))
   .settings(
     organization := "FreeChips",
-    name := "chisel-top-project",
+    name := "chisel-project",
     version := "0.0.1",
     scalaVersion := "2.12.10",
     maxErrors := 3,
@@ -22,9 +22,14 @@ lazy val root = (project in file("."))
 scalacOptions --= Seq(
   "-Xfatal-warnings"
 )
+scalacOptions ++= Seq(
+  "-Xsource:2.11"
+)
+
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
 
 // Aliases
-addCommandAlias("com", "all compile test:compile it:compile")
+addCommandAlias("com", "all compile test:compile")
+addCommandAlias("rel", "reload")
 addCommandAlias("fix", "all compile:scalafix test:scalafix")
 addCommandAlias("fmt", "all scalafmtSbt scalafmtAll")
